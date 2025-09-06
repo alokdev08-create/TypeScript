@@ -1,0 +1,19 @@
+style   
+{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+h1   
+{
+    color: #333;
+}
+p   
+{
+    font-size: 16px;
+    color: #666;
+}
+/* This is a simple CSS file for styling the HTML content. You can modify the styles as needed. */
