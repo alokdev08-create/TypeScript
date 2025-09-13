@@ -1,27 +1,106 @@
+// ✅ Logs a basic message to verify TypeScript setup
 console.log("This is a TypeScript project.");
-// This is a simple TypeScript file that logs a message to the console.
-// You can add more functionality as needed.
 
+// ✅ Logs a greeting message to the console
 console.log("Hello, World!");
+
+// ✅ Calls the greet function and stores the result in a typed variable
 let greeting: string = greet("TypeScript User");
+
+// ⚠️ This line does nothing — missing parentheses to invoke console.log
 console.log;
+
+// ✅ Function declaration with typed parameter and return value
 function greet(name: string): string {
   return `Hello, ${name}!`;
 }
 
-//1 . Variables declaration and types
+// -------------------- Variable Declarations --------------------
+
+// ✅ Boolean type variable
 let isDone: boolean = false;
 console.log(isDone);
 
+// ✅ Number type variable
 let decimal: number = 6;
 console.log(decimal);
+
+// ✅ String type variable
 let color: string = "blue";
 console.log(color);
+
+// ✅ Array of numbers
 let list: number[] = [1, 2, 3];
 console.log(list);
+
+// ✅ Tuple with fixed types and order
 let tuple: [string, number] = ["hello", 10];
 console.log(tuple);
 
+// -------------------- Interface & Object --------------------
 
+// ✅ Defines a custom type for user objects
+interface User {
+  userName: string;
+  id: number;
+}
 
+// ✅ Creates an object that matches the User interface
+const object: User = {
+  userName: "Alok Ranjan",
+  id: 1
+};
+console.log(object);
 
+// ✅ Variable assigned null (type will be inferred as any or null)
+let userName = null;
+console.log(userName);
+
+// ✅ Declared but uninitialized variable (type is implicitly any)
+let userId;
+console.log(userId);
+
+// ✅ Using 'any' type to allow dynamic reassignment
+let networkData: any = 123;
+networkData = "123";
+console.log(networkData);
+
+// -------------------- Function with Typed Parameters --------------------
+
+// ✅ Arrow function with typed parameters and return type
+const sum = (a: number, b: number): number => {
+  return a + b;
+};
+console.log(sum(2, 3));
+
+// -------------------- Arrays --------------------
+
+// ✅ Typed arrays for different data types
+let arrayOfNumbers: number[] = [1, 2, 3, 4, 5];
+let arrayOfStrings: string[] = ["one", "two", "three"];
+let arrayOfBooleans: boolean[] = [true, false, true];
+let arrayOfAny: any[] = [1, "two", true, { key: "value" }];
+
+console.log(arrayOfNumbers);   // Logs number array
+console.log(arrayOfStrings);   // Logs string array
+console.log(arrayOfBooleans);  // Logs boolean array
+console.log(arrayOfAny);       // Logs mixed-type array
+
+// ✅ Accessing array length
+let arrayOfNumbersLength: number = arrayOfNumbers.length;
+console.log(arrayOfNumbersLength);
+
+// ✅ Iterating using traditional for loop
+for (let i = 0; i < arrayOfNumbers.length; i++) {
+  console.log(arrayOfNumbers[i]);
+}
+
+// ✅ Iterating using forEach method
+arrayOfNumbers.forEach((num) => {
+  console.log(num);
+});
+
+// ✅ Iterating using for...of loop
+for (const num of arrayOfNumbers) {
+  console.log(num);
+}
