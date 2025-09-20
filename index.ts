@@ -48,7 +48,7 @@ interface User {
 // ✅ Creates an object that matches the User interface
 const object: User = {
   userName: "Alok Ranjan",
-  id: 1
+  id: 1,
 };
 console.log(object);
 
@@ -73,7 +73,6 @@ const sum = (a: number, b: number): number => {
 };
 console.log(sum(2, 3));
 
-
 // -------------------- Arrays --------------------
 
 // ✅ Typed arrays for different data types
@@ -82,10 +81,10 @@ let arrayOfStrings: string[] = ["one", "two", "three"];
 let arrayOfBooleans: boolean[] = [true, false, true];
 let arrayOfAny: any[] = [1, "two", true, { key: "value" }];
 
-console.log(arrayOfNumbers);   // Logs number array
-console.log(arrayOfStrings);   // Logs string array
-console.log(arrayOfBooleans);  // Logs boolean array
-console.log(arrayOfAny);       // Logs mixed-type array
+console.log(arrayOfNumbers); // Logs number array
+console.log(arrayOfStrings); // Logs string array
+console.log(arrayOfBooleans); // Logs boolean array
+console.log(arrayOfAny); // Logs mixed-type array
 
 // ✅ Accessing array length
 let arrayOfNumbersLength: number = arrayOfNumbers.length;
@@ -109,30 +108,96 @@ for (const num of arrayOfNumbers) {
 console.log(typeof arrayOfNumbers); // Output: 'object'
 
 // All methods and properties of arrayOfNumbers are accessible here
-console.log(arrayOfNumbers.pop()); // Removes and logs the last element
-console.log(arrayOfNumbers);       // Logs the modified array
-console.log(arrayOfNumbers.push(6)); // Adds an element and logs new length
-console.log(arrayOfNumbers);
-console.log(arrayOfNumbers.indexOf(3)); // Logs the index of element '3'
-console.log(arrayOfNumbers.slice(1, 4)); // Logs a portion of the array    
-console.log(arrayOfNumbers.sort()); // Logs the sorted array
-console.log(arrayOfNumbers.reverse());
-console.log(arrayOfNumbers.concat([7, 8, 9])); // Logs concatenated array
-console.log(arrayOfNumbers.join(", ")); // Logs array elements as a string
-console.log(arrayOfNumbers.includes(4)); // Logs true if '4' is in the array
-console.log(arrayOfNumbers.map(num => num * 2)); // Logs a new array with each element doubled
-console.log(arrayOfNumbers.filter(num => num % 2 === 0)); // Logs a new array with only even numbers
-console.log(arrayOfNumbers.reduce((acc, num) => acc + num, 0)); // Logs the sum of all elements
-console.log(arrayOfNumbers.find(num => num > 3));
-console.log(arrayOfNumbers.every(num => num > 0)); // Logs true if all elements are greater than 0
-console.log(arrayOfNumbers.some(num => num > 4));
-console.log(arrayOfNumbers.fill(0, 2, 5)); // Logs the array with elements from index 2 to 4 set to 0
-console.log(arrayOfNumbers.flatMap(num => [num, num * 2]));
-console.log(arrayOfNumbers.copyWithin(0, 3, 5)); // Logs the array after copying elements within it
-console.log(arrayOfNumbers.entries());
-console.log(arrayOfNumbers.keys());
-console.log(arrayOfNumbers.values());
-console.log(Array.isArray(arrayOfNumbers)); // Logs true if arrayOfNumbers is an array
-console.log(arrayOfNumbers.toString()); // Logs the array as a comma-separated string
-console.log(arrayOfNumbers.toLocaleString());
-console.log(arrayOfNumbers.findIndex(num => num === 3)); // Logs the index of the first element that matches the condition  
+// console.log(arrayOfNumbers.pop()); // Removes and logs the last element
+// console.log(arrayOfNumbers);       // Logs the modified array
+// console.log(arrayOfNumbers.push(6)); // Adds an element and logs new length
+// console.log(arrayOfNumbers);
+// console.log(arrayOfNumbers.indexOf(3)); // Logs the index of element '3'
+// console.log(arrayOfNumbers.slice(1, 4)); // Logs a portion of the array
+// console.log(arrayOfNumbers.sort()); // Logs the sorted array
+// console.log(arrayOfNumbers.reverse());
+// console.log(arrayOfNumbers.concat([7, 8, 9])); // Logs concatenated array
+// console.log(arrayOfNumbers.join(", ")); // Logs array elements as a string
+// console.log(arrayOfNumbers.includes(4)); // Logs true if '4' is in the array
+// console.log(arrayOfNumbers.map(num => num * 2)); // Logs a new array with each element doubled
+// console.log(arrayOfNumbers.filter(num => num % 2 === 0)); // Logs a new array with only even numbers
+// console.log(arrayOfNumbers.reduce((acc, num) => acc + num, 0)); // Logs the sum of all elements
+// console.log(arrayOfNumbers.find(num => num > 3));
+// console.log(arrayOfNumbers.every(num => num > 0)); // Logs true if all elements are greater than 0
+// console.log(arrayOfNumbers.some(num => num > 4));
+// console.log(arrayOfNumbers.fill(0, 2, 5)); // Logs the array with elements from index 2 to 4 set to 0
+// console.log(arrayOfNumbers.flatMap(num => [num, num * 2]));
+// console.log(arrayOfNumbers.copyWithin(0, 3, 5)); // Logs the array after copying elements within it
+// console.log(arrayOfNumbers.entries());
+// console.log(arrayOfNumbers.keys());
+// //console.log(arrayOfNumbers.values());
+// console.log(Array.isArray(arrayOfNumbers)); // Logs true if arrayOfNumbers is an array
+// console.log(arrayOfNumbers.toString()); // Logs the array as a comma-separated string
+// console.log(arrayOfNumbers.toLocaleString());
+//console.log(arrayOfNumbers.findIndex(num => num === 3)); // Logs the index of the first element that matches the condition
+
+// Union Types
+let unionType: number | string;
+unionType = 42;
+console.log(unionType);
+unionType = "A string value";
+console.log(unionType);
+let mixedArray: (number | string)[] = [1, "two", 3, "four"];
+
+mixedArray.forEach((item) => {
+  console.log(item);
+});
+
+console.log(mixedArray);
+
+// Object Types
+let person: {
+  name: string;
+  age: number;
+  isEmployed: boolean;
+} = {
+  name: "Alok",
+  age: 32,
+  isEmployed: true
+};
+
+console.log(person.name);
+console.log(person.age);
+console.log(person.isEmployed);
+console.log(typeof person);
+
+// function with optional and default parameters
+introduce("Alice"); // Uses default city
+introduce("Bob", 25); // Uses default city
+introduce("Charlie", 30, "New York"); // All parameters provided
+console.log(introduce("Alice"));
+console.log(introduce("Bob", 25));
+console.log(introduce("Charlie", 30, "New York"));
+
+// Function definition
+function introduce(name: string, age?: number, city: string = "Unknown"): string {
+  if (age) {  
+    return `My name is ${name}, I'm ${age} years old and I live in ${city}.`;
+  } else {
+    return `My name is ${name} and I live in ${city}.`;
+  }
+
+}
+
+// Union Type function
+function displayValue(value: number | string): void {
+  if (typeof value === "number") {  
+    console.log(`The number is: ${value}`);
+  }
+  else {
+    console.log(`The string is: ${value}`);
+  }
+}
+
+displayValue(100);
+displayValue("Hello TypeScript");
+console.log(displayValue(100));
+console.log(displayValue("Hello TypeScript"));
+
+
+
