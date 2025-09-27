@@ -158,7 +158,7 @@ let person: {
 } = {
   name: "Alok",
   age: 32,
-  isEmployed: true
+  isEmployed: true,
 };
 
 console.log(person.name);
@@ -175,21 +175,23 @@ console.log(introduce("Bob", 25));
 console.log(introduce("Charlie", 30, "New York"));
 
 // Function definition
-function introduce(name: string, age?: number, city: string = "Unknown"): string {
-  if (age) {  
+function introduce(
+  name: string,
+  age?: number,
+  city: string = "Unknown"
+): string {
+  if (age) {
     return `My name is ${name}, I'm ${age} years old and I live in ${city}.`;
   } else {
     return `My name is ${name} and I live in ${city}.`;
   }
-
 }
 
 // Union Type function
 function displayValue(value: number | string): void {
-  if (typeof value === "number") {  
+  if (typeof value === "number") {
     console.log(`The number is: ${value}`);
-  }
-  else {
+  } else {
     console.log(`The string is: ${value}`);
   }
 }
@@ -199,5 +201,112 @@ displayValue("Hello TypeScript");
 console.log(displayValue(100));
 console.log(displayValue("Hello TypeScript"));
 
+//void function
+logMessage("This is a log message.");
+function logMessage(message: string): void {
+  console.log(`Log: ${message}`);
+}
 
+computeSum(5, 10); // Outputs: 15
+function computeSum(a: number, b: number): void {
+  let sum: number = a + b;
+  console.log(sum);
+}
+
+// Never function
+// Uncomment the following line to see the error
+// let neverVar1: string = "This will cause an error";
+// let neverVar2: number = 123;
+// let neverVar3: null = null;
+// let neverVar4: undefined = undefined;
+// let neverVar5: object = {};
+// let neverVar6: any[] = [];
+
+// let neverVar7: boolean = true;
+// let neverVar8: boolean = false;
+// //let neverVar9: symbol = Symbol();
+// //let neverVar10: bigint = BigInt(123);
+// let neverVar11: () => void = function () {};
+// let neverVar12: RegExp = /abc/;
+
+// function throwError(): never {
+//   throw new Error("This function never returns");
+// }
+
+// let neverVar: never = throwError(); // ✅ Valid assignment
+
+//Assertion
+let someValue: unknown = 123;
+
+// Using 'as' syntax
+let strLength1: number = (someValue as string).length;
+console.log(strLength1);
+
+// Tuple 
+  //Example 1 : 
+let tupleExample: [string, number, boolean] = ["Hello", 42, true];
+console.log(tupleExample);
+
+// Accessing tuple elements
+let firstElement: string = tupleExample[0];
+let secondElement: number = tupleExample[1];
+let thirdElement: boolean = tupleExample[2];
+console.log(firstElement, secondElement, thirdElement);
+//Example 2 : 
+console.log("Example 2: Tuple with Conditional Logic");
+
+const [num1, num2, action] = [1, 2, "add"];
+
+if (action === "add") {
+  console.log("Sum:", num1 + num2);
+} else if (action === "multiply") {
+  console.log("Product:", num1 * num2);
+}
+console.log("Action:", action);
+
+console.log("Example 3: Tuple with optional element");
+//Example 3 : Optional Tuple Elements
+let optionalTuple: [string, number, boolean?] = ["Test", 100];
+console.log(optionalTuple);
+
+// Enums
+// ✅ Enum declaration
+enum Weekday {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+}
+
+// ✅ Assigning an enum value
+const today: Weekday = Weekday.Monday;
+
+// ✅ Forward and reverse mapping
+console.log("Today is:", Weekday[today]); // Outputs: Saturday
+console.log("Enum value:", today);        // Outputs: 6
+
+const dayName: string = Weekday[today] ?? "Unknown";
+console.log(`Day with value ${today} is:`, dayName);
+
+
+// ✅ Iterating over enum keys and values
+console.log("Enum Iteration:");
+for (const key in Weekday) {
+  if (isNaN(Number(key))) {
+    console.log("Day name:", key);        // Outputs: Sunday, Monday, ...
+  } else {
+    console.log("Day value:", key);       // Outputs: 0, 1, 2, ...
+  }
+}
+
+// ✅ Function using enum
+function isWeekend(day: Weekday): boolean {
+  return day === Weekday.Saturday || day === Weekday.Sunday;
+}
+
+console.log("Is today weekend?", isWeekend(today));               // false
+console.log("Is Saturday weekend?", isWeekend(Weekday.Saturday)); // true
 

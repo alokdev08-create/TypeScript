@@ -1,3 +1,4 @@
+var _a;
 // ✅ Logs a basic message to verify TypeScript setup
 console.log("This is a TypeScript project.");
 // ✅ Logs a greeting message to the console
@@ -118,7 +119,7 @@ console.log(mixedArray);
 var person = {
     name: "Alok",
     age: 32,
-    isEmployed: true
+    isEmployed: true,
 };
 console.log(person.name);
 console.log(person.age);
@@ -141,3 +142,107 @@ function introduce(name, age, city) {
         return "My name is ".concat(name, " and I live in ").concat(city, ".");
     }
 }
+// Union Type function
+function displayValue(value) {
+    if (typeof value === "number") {
+        console.log("The number is: ".concat(value));
+    }
+    else {
+        console.log("The string is: ".concat(value));
+    }
+}
+displayValue(100);
+displayValue("Hello TypeScript");
+console.log(displayValue(100));
+console.log(displayValue("Hello TypeScript"));
+//void function
+logMessage("This is a log message.");
+function logMessage(message) {
+    console.log("Log: ".concat(message));
+}
+computeSum(5, 10); // Outputs: 15
+function computeSum(a, b) {
+    var sum = a + b;
+    console.log(sum);
+}
+// Never function
+// Uncomment the following line to see the error
+// let neverVar1: string = "This will cause an error";
+// let neverVar2: number = 123;
+// let neverVar3: null = null;
+// let neverVar4: undefined = undefined;
+// let neverVar5: object = {};
+// let neverVar6: any[] = [];
+// let neverVar7: boolean = true;
+// let neverVar8: boolean = false;
+// //let neverVar9: symbol = Symbol();
+// //let neverVar10: bigint = BigInt(123);
+// let neverVar11: () => void = function () {};
+// let neverVar12: RegExp = /abc/;
+// function throwError(): never {
+//   throw new Error("This function never returns");
+// }
+// let neverVar: never = throwError(); // ✅ Valid assignment
+//Assertion
+var someValue = 123;
+// Using 'as' syntax
+var strLength1 = someValue.length;
+console.log(strLength1);
+// Tuple 
+//Example 1 : 
+var tupleExample = ["Hello", 42, true];
+console.log(tupleExample);
+// Accessing tuple elements
+var firstElement = tupleExample[0];
+var secondElement = tupleExample[1];
+var thirdElement = tupleExample[2];
+console.log(firstElement, secondElement, thirdElement);
+//Example 2 : 
+console.log("Example 2: Tuple with Conditional Logic");
+var _b = [1, 2, "add"], num1 = _b[0], num2 = _b[1], action = _b[2];
+if (action === "add") {
+    console.log("Sum:", num1 + num2);
+}
+else if (action === "multiply") {
+    console.log("Product:", num1 * num2);
+}
+console.log("Action:", action);
+console.log("Example 3: Tuple with optional element");
+//Example 3 : Optional Tuple Elements
+var optionalTuple = ["Test", 100];
+console.log(optionalTuple);
+// Enums
+// ✅ Enum declaration
+var Weekday;
+(function (Weekday) {
+    Weekday[Weekday["Sunday"] = 0] = "Sunday";
+    Weekday[Weekday["Monday"] = 1] = "Monday";
+    Weekday[Weekday["Tuesday"] = 2] = "Tuesday";
+    Weekday[Weekday["Wednesday"] = 3] = "Wednesday";
+    Weekday[Weekday["Thursday"] = 4] = "Thursday";
+    Weekday[Weekday["Friday"] = 5] = "Friday";
+    Weekday[Weekday["Saturday"] = 6] = "Saturday";
+})(Weekday || (Weekday = {}));
+// ✅ Assigning an enum value
+var today = Weekday.Monday;
+// ✅ Forward and reverse mapping
+console.log("Today is:", Weekday[today]); // Outputs: Saturday
+console.log("Enum value:", today); // Outputs: 6
+var dayName = (_a = Weekday[today]) !== null && _a !== void 0 ? _a : "Unknown";
+console.log("Day with value ".concat(today, " is:"), dayName);
+// ✅ Iterating over enum keys and values
+console.log("Enum Iteration:");
+for (var key in Weekday) {
+    if (isNaN(Number(key))) {
+        console.log("Day name:", key); // Outputs: Sunday, Monday, ...
+    }
+    else {
+        console.log("Day value:", key); // Outputs: 0, 1, 2, ...
+    }
+}
+// ✅ Function using enum
+function isWeekend(day) {
+    return day === Weekday.Saturday || day === Weekday.Sunday;
+}
+console.log("Is today weekend?", isWeekend(today)); // false
+console.log("Is Saturday weekend?", isWeekend(Weekday.Saturday)); // true
